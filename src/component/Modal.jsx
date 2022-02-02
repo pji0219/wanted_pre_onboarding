@@ -42,11 +42,11 @@ const ModalContent = styled.p`
 `;
 
 const ModalOpenBtnContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
 `;
 
 const ModalOpenBtn = styled.button`
@@ -59,6 +59,7 @@ const ModalOpenBtn = styled.button`
   color: white;
   cursor: pointer;
   font-size: 18px;
+  margin-right: 10px;
 `;
 
 function Modal() {
