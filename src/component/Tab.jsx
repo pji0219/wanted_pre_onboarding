@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled/macro';
-// import { css } from '@emotion/react';
 
 // 스타일
 const TabContainer = styled.ul`
   background: #ff7043;
-  width: 500px;
+  width: 600px;
   height: 50px;
   list-style: none;
   display: flex;
   justify-content: center;
+  padding: 0;
 `;
 
 const TabItem = styled.li`
@@ -24,11 +24,13 @@ const TabItem = styled.li`
   background: ${({ active }) => (active ? `#e64a19` : `#ff7043`)};
 `;
 
-const ContentContainer = styled.div`
-  width: 500px;
+const ContentArea = styled.div`
+  width: 600px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${({ active }) => (active ? `#ff7043` : `none`)};
 `;
 
 const Content = styled.div`
@@ -36,22 +38,22 @@ const Content = styled.div`
   font-weight: bold;
 `;
 
-// 메뉴 컴포넌트
+// 메뉴들
 const menuList = {
-  0: 'sdfdf',
-  1: 'sdfsdfsdf',
+  1: '👩‍💻프론트엔드 개발자가',
+  2: '되고 싶어요😊',
 };
 
 // 탭들
 const tabs = [
   {
     id: 0,
-    menuIndex: 0,
+    menuIndex: 1,
     name: 'Tab1',
   },
   {
     id: 1,
-    menuIndex: 1,
+    menuIndex: 2,
     name: 'Tab2',
   },
 ];
@@ -72,9 +74,9 @@ function Tab() {
           </TabItem>
         ))}
       </TabContainer>
-      <ContentContainer>
+      <ContentArea active={menu}>
         <Content>{menuList[menu]}</Content>
-      </ContentContainer>
+      </ContentArea>
     </>
   );
 }
