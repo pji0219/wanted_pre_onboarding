@@ -27,6 +27,7 @@ const TabItem = styled.li`
 const ContentArea = styled.div`
   width: 600px;
   height: 300px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
