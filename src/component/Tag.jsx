@@ -68,17 +68,49 @@ const TagInpunt = styled.input`
 function Tag() {
   const [tags, setTags] = useState([]);
 
+  // 태그 추가
+  const addTagHandler = (event) => {
+    // 입력된 글자에 공백이 있으면 공백 없앰
+    let value = event.target.value.trim();
+
+    // 이미 있는 태그가 아니고 value에 값이 있고 엔터키를 눌러야 태그가 입력 되게 함
+    if (event.key === 'Enter' && !tags.includes(value) && value) {
+      setTags([...tags, value]);
+
+      // 태그가 추가되면 input창 비움
+      event.target.value = '';
+    }
+  };
+
+  // 태그 삭제
+  const tagDeleteHandler = (idxTag) => {
+    /* 
+      클릭 이벤트로 map함수의 인덱스를 파라미터로 받아온 다음 그 인덱스에 해당하는 태그가 아닌것만 필터함
+      즉 삭제되는 것과 동일한 효과
+    */
+    setTags(
+      tags.filter((tag) => {
+        return tag !== tags[idxTag];
+      })
+    );
+  };
+
   return (
     <TagInputContainer>
       <TagContainer>
-        <TagItem>
-          <TagTitle>최남라</TagTitle>
-          <TagCloseBtn>&times;</TagCloseBtn>
-        </TagItem>
+        {tags.map((tag, index) => (
+          <TagItem key={index}>
+            <TagTitle>{tag}</TagTitle>
+            <TagCloseBtn onClick={() => tagDeleteHandler(index)}>
+              &times;
+            </TagCloseBtn>
+          </TagItem>
+        ))}
       </TagContainer>
       <TagInpunt
         type="text"
         placeholder="입력 후 엔터를 눌러 태그를 추가 하세요."
+        onKeyUp={addTagHandler}
       />
     </TagInputContainer>
   );
