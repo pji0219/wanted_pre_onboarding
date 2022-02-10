@@ -10,7 +10,7 @@ emotion, react
 
 ## 1. Tab
 
-먼저 먼저 스타일링을 어떻게 하였는지 부터 설명 드리겠습니다.
+먼저 스타일링을 어떻게 하였는지 부터 설명 드리겠습니다.
 
 ```js
 const TabContainer = styled.ul`
